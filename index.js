@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+require('dotenv').config();
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(morgan('tiny'))
 app.use(cors());
 app.use(express.json());
 
-const URI ='mongodb+srv://marktpul_user:SVO87P7U0cchznst@marktcluster.ikcnf.mongodb.net/Agenda-telefonica?retryWrites=true&w=majority'
+const URI = process.env.DB_URI
 
 mongoose.connect(URI, {
   useNewUrlParser: true,
